@@ -1,0 +1,24 @@
+Grafrepresentation?
+	Adjacency matrix?
+	Kantlistor?
+	Annat?
+
+På vilka sätt kan vi karaktärisera grafen på? Egenskaper hos grafen?
+	Gradfördelning
+	Antal delgrafer
+	Mer?
+	
+Metoder att implementera
+	Nodnamn till siffror för att spara minne (kunna gå tillbaka till namn igen)
+	Räkna partitioner
+	Storlek på partitioner
+	Gradfördelning
+	Skapa delgrafer med <1000 noder (+ hjälpfunktioner om det behövs)
+	Mer?
+
+
+
+Hur ska vi presentera våra partitioner?
+	txt med nodnamn?
+	Andra förslag?
+	
