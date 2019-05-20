@@ -6,19 +6,20 @@ Grafrepresentation?
 På vilka sätt kan vi karaktärisera grafen på? Egenskaper hos grafen?
 	Gradfördelning
 	Antal delgrafer
+	Storlek av delgrafer/fördelning av storlek.
 	Mer?
 	
 Metoder att implementera
 	Nodnamn till siffror för att spara minne (kunna gå tillbaka till namn igen)
-	Räkna partitioner
+	Räkna partitioner (Flood fill?)
 	Storlek på partitioner
+	Fördelning av partitionstorlekar
 	Gradfördelning
-	Skapa delgrafer med <1000 noder (+ hjälpfunktioner om det behövs)
+	Skapa delgrafer(partitioner) med <1000 noder (+ hjälpfunktioner om det behövs)
 	Mer?
-
-
+	
 
 Hur ska vi presentera våra partitioner?
 	txt med nodnamn?
 	Andra förslag?
-	
+	.dot-filer?
