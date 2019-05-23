@@ -1,6 +1,6 @@
 Grafrepresentation?
 	Adjacency matrix?
-	Kantlistor?
+	Kantlistor? 
 	Annat?
 
 På vilka sätt kan vi karaktärisera grafen på? Egenskaper hos grafen?
@@ -10,7 +10,7 @@ På vilka sätt kan vi karaktärisera grafen på? Egenskaper hos grafen?
 	Mer?
 	
 Metoder att implementera
-	Nodnamn till siffror för att spara minne (kunna gå tillbaka till namn igen)
+	Nodnamn till siffror eller bokstäver för att spara minne (kunna gå tillbaka till namn igen)
 	Räkna partitioner (Flood fill?)
 	Storlek på partitioner
 	Fördelning av partitionstorlekar
@@ -23,3 +23,4 @@ Hur ska vi presentera våra partitioner?
 	txt med nodnamn?
 	Andra förslag?
 	.dot-filer?
+	en stor fil med kolumn för partitionsnummer
