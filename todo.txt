@@ -19,6 +19,9 @@ Metoder att implementera
 	Mer?
 	
 
+Partitionering implementation:
+	Ta bort noder med höga gradtal i stora komponenter
+
 Hur ska vi presentera våra partitioner?
 	txt med nodnamn?
 	Andra förslag?
