@@ -94,13 +94,18 @@ public class DataToGraphConverter{
 			e.printStackTrace();
 		}
 		
-		g.connectedComponents();
+		//g.connectedComponents();
 		
-		g.degreeDist();
+		//g.degreeDist();
 		
-		g.partitionDist();
+		//g.partitionDist();
 		
-		g.removeNode(5);
+		g.partition(1000);
+		
+		int[] set = g.connectedComponents();
+		
+		g.partitionDist(set);
+		
 	}
 	
 	

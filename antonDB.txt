@@ -1,4 +1,4 @@
 20/5/19: Spawnat lite ideer.
 21/5/19: Skapat dagbok.
 25/5/19: Skrev Flood Fill och bollade med Jan som sedan implementerade den i huvudklassen med mindre ändringar.
-26/5/19: Skrev metoder för fördelningarna för gradtal och partitionsstorlekar.
+26/5/19: Skrev metoder för fördelningarna för gradtal och partitionsstorlekar. Även skrivit basen till huvudpartitionering (För att reducera till storlek minder än 1000).

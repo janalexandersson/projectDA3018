@@ -148,6 +148,8 @@ public class Graph{
     //To count number of removed edges we can just see how many edges we had before partitoning and then subrtact edges after partitoning
 	
 	
+	
+	//Uses sizes of the adjecencylist to create the distribution of degrees
 	public int[] degreeDist(){
 	
 		int[] degrees = new int[adjList.size()]; 
@@ -162,14 +164,18 @@ public class Graph{
 	
 	}
 	
-	
+	// Help function for partitionDist. Could not find a built in for max of an array so I wrote one myself.
 	public int arrayMax(int[] array){
 
 		int max = array[0];
 		
 		for(int i = 1; i < array.length; i++){
 		
-			System.out.println(array[i]); //int[] initialized with 0
+			if(array[i] > max){
+			
+				max = array[i];
+			
+			}
 		
 		}
 		
@@ -177,9 +183,9 @@ public class Graph{
 
 	}
 	
-	public int[] partitionDist(){
-				
-		int[] set = connectedComponents();
+	
+	//Takes the array returned by connectedComponents
+	public int[] partitionDist(int[] set){
 		
 		int max = arrayMax(set);
 		
@@ -197,5 +203,58 @@ public class Graph{
 		return sizes;
 	
 	}
-
+	
+	//Takes the array returned by connectedComponents and some maximum threshold for the partition size
+	public void partition(int threshold){
+					
+		int[] degrees = degreeDist();
+		
+		int[] set = connectedComponents();
+			
+		int[] sizes = partitionDist(set);
+		
+		System.out.println("Max Partition Size: " + arrayMax(sizes));
+		
+		while(arrayMax(sizes) > threshold){ // O(n^3)???
+		
+			for(int k = 0; k < sizes.length; k++){ //O(n^2)?
+			
+				if(sizes[k] > threshold){
+						
+					int toRemove = 0; //Ful lösning men det kommer ju alltid finnas någon. Vill ha något indexOF-liknande men inget finns för vanliga arrays.
+					
+					int degreeRemoved = 0;
+					
+					for(int i = 0; i < set.length; i++){
+					
+						if(set[i] == k){
+							
+							if(degrees[i] > threshold){ //För att snabba upp lite men oklart om vi ska inkludera eller inte
+							
+								removeNode(i);
+							
+							}else if(degrees[i] > degreeRemoved){
+							
+								toRemove = i;
+								
+								degreeRemoved = degrees[i];
+								
+							}
+						}
+					}
+					
+					removeNode(toRemove);
+					
+				}
+				
+			}
+			
+			set = connectedComponents();
+			
+			sizes = partitionDist(set);	
+			
+			System.out.println("Max Partition Size: " + arrayMax(sizes));
+			
+		}
+	}
 }
