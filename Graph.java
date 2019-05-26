@@ -117,16 +117,18 @@ public class Graph{
 	public int[] connectedComponents(){
 		int[] indicator = new int[adjList.size()];
 		
-		int k = 1;
+		Arrays.fill(indicator, -1);
+		
+		int k = 0;
 		for(int i = 0; i<indicator.length; i++){
 			//if node i does not belong to a component yet, it has value 0
-			if(indicator[i] == 0){
+			if(indicator[i] == -1){
 				//paint component with color k
 				floodFillHelper(indicator, i, k);
 				k++;
 			}
 		}
-		System.out.println(k);
+		System.out.println("Partitions = " + k);
 		return indicator;
 	}
 	
@@ -145,8 +147,55 @@ public class Graph{
     } 
     //To count number of removed edges we can just see how many edges we had before partitoning and then subrtact edges after partitoning
 	
+	
+	public int[] degreeDist(){
+	
+		int[] degrees = new int[adjList.size()]; 
+	
+		for(int i = 0; i < adjList.size(); i++){
+		
+			degrees[i] = adjList.get(i).size();
 
+		}
+		
+		return degrees;
+	
+	}
 	
 	
+	public int arrayMax(int[] array){
+
+		int max = array[0];
+		
+		for(int i = 1; i < array.length; i++){
+		
+			System.out.println(array[i]); //int[] initialized with 0
+		
+		}
+		
+		return(max);
+
+	}
 	
+	public int[] partitionDist(){
+				
+		int[] set = connectedComponents();
+		
+		int max = arrayMax(set);
+		
+		//Time vs memory, either we save the max, which uses memory, or we calculate the max twice which uses extra time
+		
+		int[] sizes = new int[max+1];
+
+		
+		for(int k = 0; k < set.length; k++){
+		
+			sizes[set[k]]++; //int[] initialized with 0
+			
+		}
+		
+		return sizes;
+	
+	}
+
 }

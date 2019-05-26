@@ -96,6 +96,10 @@ public class DataToGraphConverter{
 		
 		g.connectedComponents();
 		
+		g.degreeDist();
+		
+		g.partitionDist();
+		
 		g.removeNode(5);
 	}
 	
