@@ -204,8 +204,8 @@ public class Graph{
 	
 	}
 	
-	//Takes the array returned by connectedComponents and some maximum threshold for the partition size
-	public void partition(int threshold){
+	//Takes some maximum size for a partition whilst also taking a threshold where we remove all degrees of that degree or higher
+	public void partitionWithoutExtremes(int maxSize, int threshold){
 					
 		int[] degrees = degreeDist();
 		
@@ -215,12 +215,14 @@ public class Graph{
 		
 		System.out.println("Max Partition Size: " + arrayMax(sizes));
 		
-		while(arrayMax(sizes) > threshold){ // O(n^3)???
+		int removed = 0;
+		
+		while(arrayMax(sizes) > maxSize){ // O(n^3)???
 		
 			for(int k = 0; k < sizes.length; k++){ //O(n^2)?
 			
-				if(sizes[k] > threshold){
-						
+				if(sizes[k] > maxSize){
+					
 					int toRemove = 0; //Ful lösning men det kommer ju alltid finnas någon. Vill ha något indexOF-liknande men inget finns för vanliga arrays.
 					
 					int degreeRemoved = 0;
@@ -229,9 +231,11 @@ public class Graph{
 					
 						if(set[i] == k){
 							
-							if(degrees[i] > threshold){ //För att snabba upp lite men oklart om vi ska inkludera eller inte
+							if(degrees[i] >= threshold){
 							
 								removeNode(i);
+								
+								removed++;
 							
 							}else if(degrees[i] > degreeRemoved){
 							
@@ -244,6 +248,7 @@ public class Graph{
 					}
 					
 					removeNode(toRemove);
+					removed++;
 					
 				}
 				
@@ -256,5 +261,8 @@ public class Graph{
 			System.out.println("Max Partition Size: " + arrayMax(sizes));
 			
 		}
+		
+		System.out.println("Partition Complete: " + removed + " nodes were removed");
+		
 	}
 }

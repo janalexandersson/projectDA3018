@@ -85,6 +85,23 @@ public class DataToGraphConverter{
 	public static void main(String[] args){
 		String filename = args[0];
 		
+		int maxSize;
+		
+		int threshold;
+		
+		if(args.length > 1){
+		
+			maxSize = Integer.parseInt(args[1]);
+			threshold = Integer.parseInt(args[2]);
+			
+		} else {
+		
+			maxSize = 1000;
+			
+			threshold = 10;
+		
+		}
+		
 		Graph g = null;
 		
 		try{
@@ -94,15 +111,17 @@ public class DataToGraphConverter{
 			e.printStackTrace();
 		}
 		
-		//g.connectedComponents();
+		int[] set = g.connectedComponents();
 		
 		//g.degreeDist();
 		
 		//g.partitionDist();
 		
-		g.partition(1000);
+		System.out.println(set.length);
 		
-		int[] set = g.connectedComponents();
+		g.partitionWithoutExtremes(maxSize, threshold);
+		
+		set = g.connectedComponents();
 		
 		g.partitionDist(set);
 		
