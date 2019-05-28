@@ -1,0 +1,17 @@
+FredrikaDB
+
+23 maj
+* försökt sätta mig in i projektet
+
+27 maj 
+* tittat igenom vad som gjorts hittils
+
+* funderat på hur man kan få till en rimlig partitionering (ej ta bort mer än nödvändigt)
+ baserat på vad grundpartitioneringen (ta bort gradtal över 100) ger. 
+ Vissa partitioneringar behöver förfinas mer än andra.
+
+28 maj 
+* gjort nya testfiler med hjälp av sed i unix. test_stor med 1 000 000 rader
+  och test_mellan med 100 000 rader
+
+* gjort en alternativ partition-förfinare som behandlar partition för partition
