@@ -150,6 +150,7 @@ public class Graph{
 	
 	
 	//Uses sizes of the adjecencylist to create the distribution of degrees
+	// by taking the length of the list of neighbours for each node
 	public int[] degreeDist(){
 	
 		int[] degrees = new int[adjList.size()]; 
@@ -165,7 +166,7 @@ public class Graph{
 	}
 	
 	// Help function for partitionDist. Could not find a built in for max of an array so I wrote one myself.
-	public int arrayMax(int[] array){
+	public int arrayMax(int[] array){ //O(n)
 
 		int max = array[0];
 		
@@ -207,6 +208,8 @@ public class Graph{
 	//Takes some maximum size for a partition whilst also taking a threshold where we remove all degrees of that degree or higher
 	public void partitionWithoutExtremes(int maxSize, int threshold){
 					
+		//Generates arrays of (max length n) used for the algorithm 			
+					
 		int[] degrees = degreeDist();
 		
 		int[] set = connectedComponents();
@@ -215,15 +218,15 @@ public class Graph{
 		
 		System.out.println("Max Partition Size: " + arrayMax(sizes));
 		
-		int removed = 0;
+		int removed = 0; //Counting number of removed nodes
 		
-		while(arrayMax(sizes) > maxSize){ // O(n^3)???
+		while(arrayMax(sizes) > maxSize){ //While some partition is too large...
 		
-			for(int k = 0; k < sizes.length; k++){ //O(n^2)?
+			for(int k = 0; k < sizes.length; k++){
 			
-				if(sizes[k] > maxSize){
+				if(sizes[k] > maxSize){ //If a specific partition is too large...
 					
-					int toRemove = 0; //Ful lösning men det kommer ju alltid finnas någon. Vill ha något indexOF-liknande men inget finns för vanliga arrays.
+					int toRemove = 0; //We can let this be 0 since there will alwasys be a node with tha largest degree.
 					
 					int degreeRemoved = 0;
 					
@@ -231,13 +234,13 @@ public class Graph{
 					
 						if(set[i] == k){
 							
-							if(degrees[i] >= threshold){
+							if(degrees[i] >= threshold){ //Remove all over certain threshold
 							
 								removeNode(i);
 								
 								removed++;
 							
-							}else if(degrees[i] > degreeRemoved){
+							}else if(degrees[i] > degreeRemoved){ //Update the node with the largest degree to remove it
 							
 								toRemove = i;
 								
@@ -247,16 +250,20 @@ public class Graph{
 						}
 					}
 					
-					removeNode(toRemove);
+					removeNode(toRemove); //Removing node with largest degree
 					removed++;
 					
 				}
 				
 			}
 			
-			set = connectedComponents();
+			//Updates the arrays used in the algorithm
 			
-			sizes = partitionDist(set);	
+			degrees = degreeDist(); //O(n)
+			
+			set = connectedComponents(); // O(?)
+			
+			sizes = partitionDist(set);	//O(n)
 			
 			System.out.println("Max Partition Size: " + arrayMax(sizes));
 			
