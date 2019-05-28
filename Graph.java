@@ -301,7 +301,10 @@ public class Graph{
 		System.out.println("maxgrad efter första rensningen" + arrayMax(degrees));
 		System.out.println("Max Partition Size efter första rensningen: " + arrayMax(sizes));
 
-		for(int i=0; i < sizes.length; i++){  // go through all partitions
+		int i =0;
+        	int nPartitions = sizes.length;
+       		while(i<nPartitions){
+			
 			int partitionSize = sizes[i]; // a partition size
 			int cutSize = 90;  // remove nodes with degree bigger than this if partition too big
 			while(partitionSize > threshold){
@@ -317,6 +320,8 @@ public class Graph{
 				partitionSize = sizes[i];  // update partition size
 				cutSize-=10;  // update cutSize for eventual next round
 			}
+			i++;
+            		nPartitions = sizes.length;
 		}
 		System.out.println("Max Partition Size efter förbättringsloop: " + arrayMax(sizes));
 	}
