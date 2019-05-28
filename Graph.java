@@ -272,4 +272,52 @@ public class Graph{
 		System.out.println("Partition Complete: " + removed + " nodes were removed");
 		
 	}
+	
+	/**
+	 * an alternative to partition.
+	 * enhances partitions by making them all of size <=1000.
+	 * First removes all nodes of degree>=100 (which are faulty) and then for each
+	 * too big partition we loop and remove some nodes each time until size <=1000
+	 * @param threshold max partition size. Should be 1000
+	 * @return nothing, but updates attributes
+	 */
+	public void partition2(int threshold) {
+
+		int[] degrees = degreeDist();
+
+		//degrees = degreeDist();  //degree of each node
+		System.out.println("maxgrad före första rensningen" + arrayMax(degrees));
+
+		for(int i=0; i < degrees.length; i++){ // get rid of all obviously faulty nodes
+			if(degrees[i] >= 100){
+				removeNode(i);
+			}
+		}
+
+		degrees = degreeDist();  // update
+		int[] set = connectedComponents(); //gives which partition a node belongs to
+		int[] sizes = partitionDist(set); // sizes of the partitions. size=#partitions
+
+		System.out.println("maxgrad efter första rensningen" + arrayMax(degrees));
+		System.out.println("Max Partition Size efter första rensningen: " + arrayMax(sizes));
+
+		for(int i=0; i < sizes.length; i++){  // go through all partitions
+			int partitionSize = sizes[i]; // a partition size
+			int cutSize = 90;  // remove nodes with degree bigger than this if partition too big
+			while(partitionSize > threshold){
+				for(int j = 0; j < set.length; j++) {
+					if (set[j] == partitionSize) {  //if node j belongs to a too big partition
+						if (degrees[j] > cutSize) {
+							removeNode(j);
+						}
+					}
+				}
+				set = connectedComponents();  //update
+				sizes = partitionDist(set);
+				partitionSize = sizes[i];  // update partition size
+				cutSize-=10;  // update cutSize for eventual next round
+			}
+		}
+		System.out.println("Max Partition Size efter förbättringsloop: " + arrayMax(sizes));
+	}
 }
