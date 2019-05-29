@@ -273,56 +273,88 @@ public class Graph{
 		
 	}
 	
-	/**
-	 * an alternative to partition.
-	 * enhances partitions by making them all of size <=1000.
-	 * First removes all nodes of degree>=100 (which are faulty) and then for each
-	 * too big partition we loop and remove some nodes each time until size <=1000
-	 * @param threshold max partition size. Should be 1000
-	 * @return nothing, but updates attributes
-	 */
-	public void partition2(int threshold) {
+	
+	
+    /**
+     *does: reduces too big partitions step vise by removing nodes with smaller and smaller degree,
+     * the steps given by cutDecrease.
+     * returns: nothing but updates the arrays degrees, set and sizes
+     *
+     * pros: can treat partitions differently
+     * cons: removes a little too much. We remove all nodes with degree>cutDegree, even if partition
+     *       during the loop has become < maxsize. Checking more often however might take much time.
+     *
+     * @param maxsize max partition size
+     * @param threshold nodes with this degree and more are removed. default = 100
+     * @param cutDecrease how big steps we should take when iterating
+     */
+    public void partition3(int maxsize, int threshold, int cutDecrease){
+        int[] degrees = degreeDist(); //degree of each node
 
-		int[] degrees = degreeDist();
+        System.out.println("Max degree before removing degrees >= " + threshold + ": " + arrayMax(degrees));
 
-		//degrees = degreeDist();  //degree of each node
-		System.out.println("maxgrad före första rensningen" + arrayMax(degrees));
+        for(int i=0; i < degrees.length; i++){ // get rid of all obviously faulty nodes
+            if(degrees[i] >= threshold){
+                removeNode(i);
+            }
+        }
 
-		for(int i=0; i < degrees.length; i++){ // get rid of all obviously faulty nodes
-			if(degrees[i] >= 100){
-				removeNode(i);
-			}
-		}
+        degrees = degreeDist();  // update
+        int[] set = connectedComponents(); //gives which partition a node belongs to
+        int[] sizes = partitionDist(set); // sizes of the partitions. length=#partitions
 
-		degrees = degreeDist();  // update
-		int[] set = connectedComponents(); //gives which partition a node belongs to
-		int[] sizes = partitionDist(set); // sizes of the partitions. size=#partitions
 
-		System.out.println("maxgrad efter första rensningen" + arrayMax(degrees));
-		System.out.println("Max Partition Size efter första rensningen: " + arrayMax(sizes));
+        System.out.println("Max degree after removing >= " + threshold + ": " + arrayMax(degrees));
+        System.out.println("Max Partition Size before first loop: " + arrayMax(sizes));
+        System.out.println("Number of partitions before first loop: " + sizes.length);
 
-		int i =0;
-        	int nPartitions = sizes.length;
-       		while(i<nPartitions){
-			
-			int partitionSize = sizes[i]; // a partition size
-			int cutSize = 90;  // remove nodes with degree bigger than this if partition too big
-			while(partitionSize > threshold){
-				for(int j = 0; j < set.length; j++) {
-					if (set[j] == partitionSize) {  //if node j belongs to a too big partition
-						if (degrees[j] > cutSize) {
-							removeNode(j);
-						}
-					}
-				}
-				set = connectedComponents();  //update
-				sizes = partitionDist(set);
-				partitionSize = sizes[i];  // update partition size
-				cutSize-=10;  // update cutSize for eventual next round
-			}
-			i++;
-            		nPartitions = sizes.length;
-		}
-		System.out.println("Max Partition Size efter förbättringsloop: " + arrayMax(sizes));
-	}
+        int nloops = 0; // to be updated and printed
+        String continueLoop = "yes";
+        if(arrayMax(sizes) < maxsize){
+            continueLoop = "no";
+        }
+        int cutDegree = threshold-cutDecrease; // nwe remove nodes with this degree
+        while(continueLoop.equals("yes")){
+            reduce(maxsize, degrees, set, sizes, cutDegree); // see function below
+            // updates
+            degrees = degreeDist();
+            set = connectedComponents();
+            sizes = partitionDist(set);
+            cutDegree-=cutDecrease;
+            nloops++;
+            if(arrayMax(sizes)<maxsize){
+                continueLoop = "no";
+            }
+
+        }
+        System.out.println("Number of loops: " + nloops);
+        System.out.println("Max degree after last loop: " + arrayMax(degrees));
+        System.out.println("Max Partition Size after last loop: " + arrayMax(sizes));
+        System.out.println("Number of partitions after last loop: " + sizes.length);
+    }
+
+    /**
+     * helps partition3
+     * reduces partition size of too big partitions by removing nodes with degree given by cutDegree.
+     * degrees, set and sizes must be updated between function calls
+     *
+     * @param maxsize max size of partition
+     * @param degrees degree of each node
+     * @param set which partition each node belongs to
+     * @param sizes size of each partition
+     * @param cutDegree nodes with this degree are removed
+     */
+    public void reduce(int maxsize, int[] degrees, int[] set, int[] sizes, int cutDegree){
+        for(int partition=0; partition < sizes.length; partition++){  // go through all partitions
+            if(sizes[partition] > maxsize){  // if partition is too big
+                for(int nodeNumber = 0; nodeNumber < set.length; nodeNumber++ ){ //check all nodes
+                    if(set[nodeNumber] == partition & degrees[nodeNumber] >= cutDegree){ //cut those with biggest degree
+                        removeNode(nodeNumber);
+                    }
+                }
+            }
+        }
+    }
+
+	
 }
