@@ -89,16 +89,21 @@ public class DataToGraphConverter{
 		
 		int threshold;
 		
-		if(args.length > 1){
+		int cutDecrease;
+		
+		if(args.length > 3){
 		
 			maxSize = Integer.parseInt(args[1]);
 			threshold = Integer.parseInt(args[2]);
+			cutDecrease = Integer.parseInt(args[3]);
 			
 		} else {
 		
 			maxSize = 1000;
 			
-			threshold = 10;
+			threshold = 100;
+			
+			cutDecrease = 10;
 		
 		}
 		
@@ -117,9 +122,11 @@ public class DataToGraphConverter{
 		
 		//g.partitionDist();
 		
-		System.out.println(set.length);
+		//System.out.println(set.length);
 		
-		g.partitionWithoutExtremes(maxSize, threshold);
+		//g.partitionWithoutExtremes(maxSize, threshold);
+		
+		g.partition3(maxSize, threshold, cutDecrease);
 		
 		set = g.connectedComponents();
 		

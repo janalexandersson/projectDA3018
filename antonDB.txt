@@ -2,4 +2,6 @@
 21/5/19: Skapat dagbok.
 25/5/19: Skrev Flood Fill och bollade med Jan som sedan implementerade den i huvudklassen med mindre ändringar.
 26/5/19: Skrev metoder för fördelningarna för gradtal och partitionsstorlekar. Även skrivit basen till huvudpartitionering (För att reducera till storlek minder än 1000)
-27/5/19: Filat mer på potentiella partitionsmetoder. Tar bort alla över visst gradtal vilket ger oss partioner av storlek < 1000 relativt snabbt. Vi tar dock dock för mycket från vissa partitioner där detta ej behövs. Ska kolla vidare underveckan.
+27/5/19: Filat mer på potentiella partitionsmetoder. Tar bort alla över visst gradtal vilket ger oss partioner av storlek < 1000 relativt snabbt. Vi tar dock dock för mycket från vissa partitioner där detta ej behövs. Ska kolla vidare underveckan
+28/5/19: Kontrollcheckat andra gruppmedlemmars kod.
+29/5/10: ^.
