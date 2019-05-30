@@ -103,7 +103,7 @@ public class DataToGraphConverter{
 			
 			threshold = 100;
 			
-			cutDecrease = 10;
+			cutDecrease = 5;
 		
 		}
 		

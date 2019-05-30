@@ -312,23 +312,18 @@ public class Graph{
         int[] sizes = partitionDist(set); // sizes of the partitions. length=#partitions
 
 
-        System.out.println("Max degree after removing >= " + threshold + ": " + arrayMax(degrees));
+        System.out.println("Max degree after removing " + removed + " nodes with degrees larger or equal to " + threshold + ": " + arrayMax(degrees));
         System.out.println("Max Partition Size before first loop: " + arrayMax(sizes));
         System.out.println("Number of partitions before first loop: " + sizes.length);
 
         int nloops = 0; // to be updated and printed
         
-        Boolean continueLoop = true;
-        
-        if(arrayMax(sizes) < maxsize){
-        
-            continueLoop = false;
-            
-        }
         int cutDegree = threshold-cutDecrease; // nwe remove nodes with this degree
         
-        while(continueLoop){
-        
+        while(arrayMax(sizes)>maxsize){
+			
+			System.out.println("Removing nodes with degrees greater or equal to " + cutDegree);
+			
             removed = reduce(maxsize, degrees, set, sizes, cutDegree, removed); // see function below
             // updates
             degrees = degreeDist();
@@ -336,23 +331,26 @@ public class Graph{
             set = connectedComponents();
             
             sizes = partitionDist(set);
-            
-            cutDegree-=cutDecrease;
-            
-            nloops++;
-            
-            if(arrayMax(sizes)<maxsize){
-            
-                continueLoop = false;
-                
-            }
-
+			
+			nloops++;
+			
+			System.out.println("Number of nodes removed: " + removed);
+			
+			if(cutDegree > cutDecrease*2){ //Random value for testting
+			
+				cutDegree-=cutDecrease;
+			
+			} else {
+			
+				cutDegree-=1;
+			
+			}
+			
         }
         System.out.println("Number of loops: " + nloops);
         System.out.println("Max degree after last loop: " + arrayMax(degrees));
         System.out.println("Max Partition Size after last loop: " + arrayMax(sizes));
         System.out.println("Number of partitions after last loop: " + sizes.length);
-        System.out.println("Number of nodes removed: " + removed);
     }
 
     /**
@@ -368,13 +366,13 @@ public class Graph{
      */
     public int reduce(int maxsize, int[] degrees, int[] set, int[] sizes, int cutDegree, int removed){
     
-        for(int partition=0; partition < sizes.length; partition++){  // go through all partitions
+        for(int partition = 0; partition < sizes.length; partition++){  // go through all partitions
         
             if(sizes[partition] > maxsize){  // if partition is too big
             
                 for(int nodeNumber = 0; nodeNumber < set.length; nodeNumber++ ){ //check all nodes
                 
-                    if(set[nodeNumber] == partition & degrees[nodeNumber] >= cutDegree){ //cut those with biggest degree
+                    if(set[nodeNumber] == partition && degrees[nodeNumber] >= cutDegree){ //cut those with biggest degree
                     
                         removeNode(nodeNumber);
                         removed++;
