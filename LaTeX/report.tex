@@ -81,7 +81,15 @@ In order to determine the number of disconnected subgraphs and the sizes of thes
 \section{Partitioning}
 
 
-The original graph consisted of subgraphs already from the beginning, although few. The major subgraph consisted of a couple of million nodes, far from our goal with partitions of maximum size 1000. We have information that contigs with 100 overlaps or more with great probability are faulty, a consequence of what is done prior to our task. Therefore we set 100 as a threshold and remove all nodes with degree 100 or more in the beginning of the partitioning process. After that we proceed with the partitions with size bigger than 1000 since these are the ones which we need to partition further to reach our goal. We lower the threshold with 5 and for the too big partitions we remove the nodes with degree bigger that the threshold. For the partitions that are still too big we again lower the threshold with 5 and continue like that until the threshold is 20. Nodes with this degree do occur once in a while and there is now a great risk that we remove something that is correct. Therefore we start lowering the threshold with one after that.
+The original graph consisted of subgraphs already from the beginning, although few. The major subgraph consisted of a couple of million
+nodes, far from our goal with partitions of maximum size 1000. We have information that contigs with 100 overlaps or more with great
+probability are faulty, a consequence of what is done prior to our task. Therefore we set 100 as a threshold and remove all nodes with
+degree 100 or more in the beginning of the partitioning process. After that we proceed with the partitions with size bigger than 1000
+since these are the ones which we need to partition further to reach our goal. We lower the threshold with 5 and for the too big
+partitions we remove the nodes with degree bigger that the threshold. For the partitions that are still too big we again lower the
+threshold with 5 and continue like that until the threshold is 20. Nodes with this degree do occur once in a while and there is now a
+great risk that we remove something that is correct. Therefore we start lowering the threshold with one after that.
+
 
 
 \section{Degree Distribution After Partitioning}
