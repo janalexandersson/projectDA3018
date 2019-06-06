@@ -1,11 +1,7 @@
-
-//adjacency matrix takes more space but is more efficient with removing edges etc
-//adjacency list takes less space but can be inefficient at finding of there is and edge between two nodes
-
 import java.io.*;
 import java.util.*;
 
-// ajdList represents the graph
+//ajdList represents the graph
 //nodeNameToIndex translates between nodename to index
 //indexToNodeName translates between index to nodename
 public class Graph{
@@ -64,6 +60,7 @@ public class Graph{
     } 
 	
 	
+	//Used for testing in the project, can be useful
 	public void printAllEdges() { 
 		
 		for(int v = 0; v < adjList.size(); v++){
@@ -74,10 +71,6 @@ public class Graph{
 				System.out.println(v + " " + n);
 			}
 			
-			
-// 			for(int n = 0; n< vNeighbors.size(); n++){
-// 				System.out.println(v + " " + vNeighbors.get(n));
-// 			}
 		}
     } 
 	
@@ -114,7 +107,8 @@ public class Graph{
 	
 	
 	//If there are components of size 1, those should be discarded beacuase we technically removed the node (leaved it as isolated)
-	public int[] connectedComponents(){
+	//This only applies before partitioning
+	public int[] connectedComponents(int[] degreeDist){
 		int[] indicator = new int[adjList.size()];
 		
 		Arrays.fill(indicator, -1);
@@ -124,8 +118,15 @@ public class Graph{
 			//if node i does not belong to a component yet, it has value 0
 			if(indicator[i] == -1){
 				//paint component with color k
-				floodFillHelper(indicator, i, k);
-				k++;
+				
+				if(degreeDist[i] == 0){
+				
+					floodFillHelper(indicator, i, -2);
+				
+				} else {
+					floodFillHelper(indicator, i, k);
+					k++;
+				}
 			}
 		}
 		System.out.println("Partitions = " + k);
@@ -196,8 +197,11 @@ public class Graph{
 
 		
 		for(int k = 0; k < set.length; k++){
-		
-			sizes[set[k]]++; //int[] initialized with 0
+			
+			if(set[k] != -2){
+			
+				sizes[set[k]]++; //int[] initialized with 0
+			}
 			
 		}
 		
@@ -212,7 +216,7 @@ public class Graph{
 					
 		int[] degrees = degreeDist();
 		
-		int[] set = connectedComponents();
+		int[] set = connectedComponents(degrees);
 			
 		int[] sizes = partitionDist(set);
 		
@@ -261,7 +265,7 @@ public class Graph{
 			
 			degrees = degreeDist(); //O(n)
 			
-			set = connectedComponents(); // O(?)
+			set = connectedComponents(degrees); // O(?)
 			
 			sizes = partitionDist(set);	//O(n)
 			
@@ -308,7 +312,7 @@ public class Graph{
         }
 
         degrees = degreeDist();  // update
-        int[] set = connectedComponents(); //gives which partition a node belongs to
+        int[] set = connectedComponents(degrees); //gives which partition a node belongs to
         int[] sizes = partitionDist(set); // sizes of the partitions. length=#partitions
 
 
@@ -328,7 +332,7 @@ public class Graph{
             // updates
             degrees = degreeDist();
             
-            set = connectedComponents();
+            set = connectedComponents(degrees);
             
             sizes = partitionDist(set);
 			
