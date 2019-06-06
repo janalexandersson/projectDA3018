@@ -65,7 +65,7 @@ In order to determine the degree distribution of our graph we simply used the ni
 	\label{fig:degprior}
 \end{figure}
 
-As can be seen in Figure \bref{fig:defprior} we have a large number of nodes with degrees of reasonable level, there are however some nodes with degrees that exceed 100 which according to our knowledge should be impossible. When performing our partitions these nodes will be the first to be removed due to            simply being unrealistic.
+As can be seen in Figure \bref{fig:defprior} we have a large number of nodes with degrees of reasonable level, there are however some nodes with degrees that exceed 100 which according to our knowledge should be impossible. When performing our partitions these nodes will be the first to be removed due to simply being unrealistic.
 
 \section{Distribution of Disconnected Subgraphs Prior to Partitioning}
 
@@ -77,6 +77,10 @@ In order to determine the number of disconnected subgraphs and the sizes of thes
 	\caption{Size distribution of sungraphs before partitioning}
 	\label{fig:sizeprior}
 \end{figure}
+
+The asymptotic time complexity of the algorithm is $O(n)$ since every node is visited only once where we only perform linear operations. The nodes can be visited by being the first node in a new partition or by being part of
+some other partition, and as a result being visited in a while-loop. The way in which the nodes are visited is unimportant since it they are only visited and dealt with once and with the same asynptotic time complexity $O(1)$. 
+Since we itterate through all nodes, visiting and dealing with each node with complexity $O(1)$, the total time complexity is then $O(n)$.
 
 \section{Partitioning}
 
