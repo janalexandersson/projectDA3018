@@ -47,13 +47,13 @@ public class DataToGraphConverter{
 		
 		
 		//Investigating the memory usage after the GC error ( garbage collection)
-		/*	lineNumber++;
-			if(lineNumber %100000 == 0){
-				long freeMem = Runtime.getRuntime().freeMemory();
-				long maxMem = Runtime.getRuntime().maxMemory();
-				double usage = (100.0*freeMem)/maxMem;
-				System.out.println(lineNumber + " \t" + usage + "\t  Max:" + maxMem/(1024.0*1024));
-			*/}
+// 			lineNumber++;
+// 			if(lineNumber %100000 == 0){
+// 				long freeMem = Runtime.getRuntime().freeMemory();
+// 				long maxMem = Runtime.getRuntime().maxMemory();
+// 				double usage = (100.0*freeMem)/maxMem;
+// 				System.out.println(lineNumber + " \t" + usage + "\t  Max:" + maxMem/(1024.0*1024));
+// 			}
 			
 			String[] lineEntries = line.split("\\s+");
 			
@@ -117,9 +117,9 @@ public class DataToGraphConverter{
 			e.printStackTrace();
 		}
 		
-		int[] set = g.connectedComponents();
+		int[] degreeDist = g.degreeDist();
 		
-		//g.degreeDist();
+		int[] set = g.connectedComponents(degreeDist);
 		
 		//g.partitionDist();
 		
@@ -129,7 +129,9 @@ public class DataToGraphConverter{
 		
 		g.partition3(maxSize, threshold, cutDecrease);
 		
-		set = g.connectedComponents();
+		degreeDist =  g.degreeDist();
+		
+		set = g.connectedComponents(degreeDist);
 		
 		g.partitionDist(set);
 		

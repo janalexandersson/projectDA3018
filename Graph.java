@@ -70,6 +70,7 @@ public class Graph{
 			for(int n: vNeighbors){
 				System.out.println(v + " " + n);
 			}
+			
 		}
     } 
 	
@@ -107,7 +108,7 @@ public class Graph{
 	
 	//If there are components of size 1, those should be discarded beacuase we technically removed the node (leaved it as isolated)
 	//This only applies before partitioning
-	public int[] connectedComponents(){
+	public int[] connectedComponents(int[] degreeDist){
 		int[] indicator = new int[adjList.size()];
 		
 		Arrays.fill(indicator, -1);
@@ -117,8 +118,15 @@ public class Graph{
 			//if node i does not belong to a component yet, it has value 0
 			if(indicator[i] == -1){
 				//paint component with color k
-				floodFillHelper(indicator, i, k);
-				k++;
+				
+				if(degreeDist[i] == 0){
+				
+					floodFillHelper(indicator, i, -2);
+				
+				} else {
+					floodFillHelper(indicator, i, k);
+					k++;
+				}
 			}
 		}
 		System.out.println("Partitions = " + k);
@@ -189,8 +197,11 @@ public class Graph{
 
 		
 		for(int k = 0; k < set.length; k++){
-		
-			sizes[set[k]]++; //int[] initialized with 0
+			
+			if(set[k] != -2){
+			
+				sizes[set[k]]++; //int[] initialized with 0
+			}
 			
 		}
 		
@@ -205,7 +216,7 @@ public class Graph{
 					
 		int[] degrees = degreeDist();
 		
-		int[] set = connectedComponents();
+		int[] set = connectedComponents(degrees);
 			
 		int[] sizes = partitionDist(set);
 		
@@ -254,7 +265,7 @@ public class Graph{
 			
 			degrees = degreeDist(); //O(n)
 			
-			set = connectedComponents(); // O(?)
+			set = connectedComponents(degrees); // O(?)
 			
 			sizes = partitionDist(set);	//O(n)
 			
@@ -301,7 +312,7 @@ public class Graph{
         }
 
         degrees = degreeDist();  // update
-        int[] set = connectedComponents(); //gives which partition a node belongs to
+        int[] set = connectedComponents(degrees); //gives which partition a node belongs to
         int[] sizes = partitionDist(set); // sizes of the partitions. length=#partitions
 
 
@@ -321,7 +332,7 @@ public class Graph{
             // updates
             degrees = degreeDist();
             
-            set = connectedComponents();
+            set = connectedComponents(degrees);
             
             sizes = partitionDist(set);
 			
