@@ -44,11 +44,11 @@ Using the set of rules determined in the paragraph above we created a converter 
 \medskip
 
 Running the converter from the data file in order to create the graph worked without problem when using smaller test files but we ran into problems when running it with the whole data set. We got a garbage collection error and after some searching on the Intenet we realised we could just allow Java to use more RAM (Java uses 4G per default) and after giving Java 8G RAM to work with the program ran without error. We reasoned that this is a viable solution as computers nowadays generally have access to at least 8G RAM. 
-If we can simply give Java more access to RAM then this solution is the most natural whilst also the being the quickest. So, we run the program using the line "java -Xmx8G DataToGraphConverter ../overlaps.m4", where the flag -Xmx8G specify how much RAM we we give Java access to.
+If we can simply give Java more access to RAM then this solution is the most natural whilst also the being the quickest. So, we run the program in Unix using the line "java -Xmx8G DataToGraphConverter ../overlaps.m4", where the flag -Xmx8G specify how much RAM we we give Java access to.
 
 \medskip
 
-When examining the data in order to create our convereter we ovbiosuly could not examine the file as a whole due to its size. To bypass this issue we simply used the unix command ``more'' in order to examine the data page by page. 
+When examining the data in order to create our convereter we ovbiosuly could not examine the file as a whole due to its size. To bypass this issue we simply used the unix commands ''more'' ans ''less'' in order to examine the data page by page. In the early stages we also needed smaller test files to work with, for this we used the function sed to select an interval of lines from the file and create a new file with those. 
 
 \subsection{Graph Representation}
 
@@ -81,6 +81,9 @@ In order to determine the number of disconnected subgraphs and the sizes of thes
 \section{Partitioning}
 
 
+The original graph consisted of subgraphs already from the beginning, although few. The major subgraph consisted of a couple of million nodes, far from our goal with partitions of maximum size 1000. We have information that contigs with 100 overlaps or more with great probability are faulty, a consequence of what is done prior to our task. Therefore we set 100 as a threshold and remove all nodes with degree 100 or more in the beginning of the partitioning process. After that we proceed with the partitions with size bigger than 1000 since these are the ones which we need to partition further to reach our goal. We lower the threshold with 5 and for the too big partitions we remove the nodes with degree bigger that the threshold. For the partitions that are still too big we again lower the threshold with 5 and continue like that until the threshold is 20. Nodes with this degree do occur once in a while and there is now a great risk that we remove something that is correct. Therefore we start lowering the threshold with one after that.
+
+
 \section{Degree Distribution After Partitioning}
 
 
@@ -88,7 +91,6 @@ In order to determine the number of disconnected subgraphs and the sizes of thes
 
 
 \section{Time Complexity}
-
 
 
 \end{document}
