@@ -1,0 +1,54 @@
+20/5 
+Börjar fundera på idéer och hur vi ska göra
+Skapar en todo-lista
+Skapar ett github-repo
+
+21/5 
+Fixar så att man kan ha fler än 3st collaborators på ett repo
+Börjar skissa på en graf-klass
+Bestämde mig för adjacency-list är mer fördelaktigt än matris för uppgiften
+då det tar mindre minne samt det går snabbt att ta fram gradfördelning
+Matris är fördelaktig ifall man snabbt vill kolla om det existerar en kant mellan 
+två utvalda noder men detta är inte något som troligtvis behövs för uppgiften
+
+Skissar på metoder som behövs och börjar med de naturliga:
+-addEdge
+-removeEdge 
+-removeNode (för partitioneringen)
+
+Funderar över bästa sättet att skapa en översättning mellan nod-namn och integers (för att spara minne)
+Behöver fundera mer på vad som är ett effektivt och sparsamt sätt för detta
+
+25/5
+Grafrepresentationen är färdig och jag bestämde mig för att använda ArrayList
+Detta för att de är flexibla med storleken då vi vid inläsning inte vet hur stor grafen är osv..
+Inläsningen är klar och datan konverterad till en graf. Detta använder otroligt mycket minne så man får skicka med en flagga att lägga till mer minne då man kör 
+(java -Xmx8G DataToGraphConverter ../overlaps.m4)
+Annars får man GC error (garbage collection)
+
+Grafen använder Integers och vi har HashMaps för att översätta mellan int och nodnamn
+Anton har skrivit en FloodFill metod som jag nu bygger vidare på för att ge varje komponent ett unikt nummer/färgläggning, då blir det lätt att räkna antal komponenter samt deras storlek
+Dvs man ger varje nod ett nummer beroende på vilken komponent den tillhör
+
+Testade FloodFill men fick error, trorligtvis för att rekursionen blev för djup, måste hitta ett annat sätt
+Skapade därför en egen stack, som då har tillgång till mer minne
+
+Funderade över om ArrayList är det bästa valet för att spara grannar, TreeSet kan möjligtvis vara mer effektivt då vi vill kunna ta bort kanter på ett effektivt sätt
+Dvs, låt säga att vi vill ta bort nod nr 5, så måste vi också ta bort 5 från alla listor med grannar, då vill man hitta 5 på ett effektivt sätt.
+Att loopa igenom alla grannar hos alla noder är mindre effektivt och det kan vara bra att kunna hitta nr 5 snabbare.
+ArrayList tycks dock vara något snabbare vid inläsning av data till graf, behöver därför välja.
+
+###############################################
+
+Är borta Tor-Sön helgen på festival, har pushat min kod för de andra att kolla på partitioneringen av grafen.
+Detta är varför jag gjorde större delen av mitt arbete tidigt
+
+##############################################
+
+6/6
+Vi börjar skriva på vår rapport och fixar små detaljer och snyggar till.
+
+Vi insåg att vi faktiskt inte tar bort noder när vi kör removeNode utan endast tar bort alla kanter som sitter på noden och lämnar noden isoerad. 
+Detta är ett problem då vi vill räkna partitioner. Vi kan heller inte bara ta bort alla isolerade noder då det kan uppstå isolerade noder till följd av 
+att vi tar bort kanter.
+

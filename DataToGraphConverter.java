@@ -123,6 +123,12 @@ public class DataToGraphConverter{
 		
 		int[] sizes = g.partitionDist(set);
 		
+		for(int i = 0; i < sizes.length; i++){
+		
+			System.out.println(sizes[i]);
+			
+		}	
+		
 		g.writeArray(degreeDist, "degreesPrior.txt");
 		
 		g.writeArray(sizes, "sizesPrior.txt");
@@ -136,6 +142,8 @@ public class DataToGraphConverter{
 		degreeDist =  g.degreeDist();
 		
 		set = g.connectedComponents(degreeDist);
+		
+		sizes = g.partitionDist(set);
 		
 		g.partitionDist(set);
 		
