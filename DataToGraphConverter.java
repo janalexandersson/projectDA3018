@@ -135,6 +135,7 @@ public class DataToGraphConverter{
 		
 		g.partitionDist(set);
 		
+		g.writePartitions(set);
 	}
 	
 	

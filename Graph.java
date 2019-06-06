@@ -391,4 +391,25 @@ public class Graph{
     }
 
 	
+	
+	public void writePartitions(int[] componentSet){
+		try{
+			FileWriter fw=new FileWriter("partitions.txt");    
+			
+			for(int i = 0; i < componentSet.length; i++){
+				
+				//-2 represents nodes with degree 0 and we choose to exclude them.
+				if(componentSet[i] != -2){
+					fw.write(componentSet[i] + " " + indexToNodeName.get(i) + "\n");
+				
+				}
+			}
+			fw.close();
+		}catch(Exception e){System.out.println(e);}    
+		
+	}
+	
+	
+	
+	
 }
