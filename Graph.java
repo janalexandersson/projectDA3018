@@ -79,6 +79,7 @@ public class Graph{
 		return indexToNodeName.get(index);
 	}
 	
+	//Time complexity for Floodfill is linear
 	
 	//Fill in the connected component containing node "startNode" with the number "componentNumber"
 	//This uses Flood Fill
@@ -134,7 +135,7 @@ public class Graph{
 	}
 	
 	
-	
+	// time complexity to remove a node is O(|V| + |E|)
 	//This will leave nodes as isolated, we know that we did not have any isolated nodes in our base graph
 	public void removeNode(int nodeToRemove) { 
 		
@@ -340,7 +341,7 @@ public class Graph{
 			
 			System.out.println("Number of nodes removed: " + removed);
 			
-			if(cutDegree > cutDecrease*2){ //Random value for testting
+			if(cutDegree > 20){ //Random value for testting
 			
 				cutDegree-=cutDecrease;
 			
@@ -409,6 +410,23 @@ public class Graph{
 		
 	}
 	
+	public void writeArray(int[] array, String file){
+	
+		try{
+			FileWriter fw=new FileWriter(file);    
+			
+			for(int i = 0; i < array.length; i++){
+					
+				fw.write(array[i] + "\n");
+		
+			}
+			fw.close();
+		}catch(Exception e){System.out.println(e);}    
+	
+		
+		
+	}
+
 	
 	
 	

@@ -99,7 +99,7 @@ public class DataToGraphConverter{
 			cutDecrease = Integer.parseInt(args[3]);
 			
 		} else {
-		
+			
 			maxSize = 1000;
 			
 			threshold = 100;
@@ -121,7 +121,11 @@ public class DataToGraphConverter{
 		
 		int[] set = g.connectedComponents(degreeDist);
 		
-		//g.partitionDist();
+		int[] sizes = g.partitionDist(set);
+		
+		g.writeArray(degreeDist, "degreesPrior.txt");
+		
+		g.writeArray(sizes, "sizesPrior.txt");
 		
 		//System.out.println(set.length);
 		
@@ -136,6 +140,10 @@ public class DataToGraphConverter{
 		g.partitionDist(set);
 		
 		g.writePartitions(set);
+		
+		g.writeArray(degreeDist, "degreesAfter.txt");
+		
+		g.writeArray(sizes, "sizesAfter.txt");
 	}
 	
 	
