@@ -1,4 +1,4 @@
-//JAN will look at this during the weekend
+
 import java.io.*;
 import java.util.*;
 
@@ -26,7 +26,8 @@ public class DataToGraphConverter{
 		
 	}
 	
-	
+	//I use a wrapper function which returns a BufferedReader, if one would like to change the way we specify which file we want to use
+	//Can be useful sometimes
 	public static Graph readM4(String filename) throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		return readM4(br);

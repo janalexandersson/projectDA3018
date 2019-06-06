@@ -1,11 +1,7 @@
-
-//adjacency matrix takes more space but is more efficient with removing edges etc
-//adjacency list takes less space but can be inefficient at finding of there is and edge between two nodes
-
 import java.io.*;
 import java.util.*;
 
-// ajdList represents the graph
+//ajdList represents the graph
 //nodeNameToIndex translates between nodename to index
 //indexToNodeName translates between index to nodename
 public class Graph{
@@ -64,6 +60,7 @@ public class Graph{
     } 
 	
 	
+	//Used for testing in the project, can be useful
 	public void printAllEdges() { 
 		
 		for(int v = 0; v < adjList.size(); v++){
@@ -73,11 +70,6 @@ public class Graph{
 			for(int n: vNeighbors){
 				System.out.println(v + " " + n);
 			}
-			
-			
-// 			for(int n = 0; n< vNeighbors.size(); n++){
-// 				System.out.println(v + " " + vNeighbors.get(n));
-// 			}
 		}
     } 
 	
