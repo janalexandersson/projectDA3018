@@ -114,6 +114,7 @@ public class Graph{
 	
 	
 	//If there are components of size 1, those should be discarded beacuase we technically removed the node (leaved it as isolated)
+	//This only applies before partitioning
 	public int[] connectedComponents(){
 		int[] indicator = new int[adjList.size()];
 		
