@@ -1,4 +1,4 @@
-//JAN will look at this during the weekend
+
 import java.io.*;
 import java.util.*;
 
@@ -26,7 +26,8 @@ public class DataToGraphConverter{
 		
 	}
 	
-	
+	//I use a wrapper function which returns a BufferedReader, if one would like to change the way we specify which file we want to use
+	//Can be useful sometimes
 	public static Graph readM4(String filename) throws IOException{
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		return readM4(br);
@@ -46,13 +47,13 @@ public class DataToGraphConverter{
 		
 		
 		//Investigating the memory usage after the GC error ( garbage collection)
-			lineNumber++;
-			if(lineNumber %100000 == 0){
-				long freeMem = Runtime.getRuntime().freeMemory();
-				long maxMem = Runtime.getRuntime().maxMemory();
-				double usage = (100.0*freeMem)/maxMem;
-				System.out.println(lineNumber + " \t" + usage + "\t  Max:" + maxMem/(1024.0*1024));
-			}
+// 			lineNumber++;
+// 			if(lineNumber %100000 == 0){
+// 				long freeMem = Runtime.getRuntime().freeMemory();
+// 				long maxMem = Runtime.getRuntime().maxMemory();
+// 				double usage = (100.0*freeMem)/maxMem;
+// 				System.out.println(lineNumber + " \t" + usage + "\t  Max:" + maxMem/(1024.0*1024));
+// 			}
 			
 			String[] lineEntries = line.split("\\s+");
 			
@@ -98,7 +99,7 @@ public class DataToGraphConverter{
 			cutDecrease = Integer.parseInt(args[3]);
 			
 		} else {
-		
+			
 			maxSize = 1000;
 			
 			threshold = 100;
@@ -116,11 +117,21 @@ public class DataToGraphConverter{
 			e.printStackTrace();
 		}
 		
-		int[] set = g.connectedComponents();
+		int[] degreeDist = g.degreeDist();
 		
-		//g.degreeDist();
+		int[] set = g.connectedComponents(degreeDist);
 		
-		//g.partitionDist();
+		int[] sizes = g.partitionDist(set);
+		
+		for(int i = 0; i < sizes.length; i++){
+		
+			System.out.println(sizes[i]);
+			
+		}	
+		
+		g.writeArray(degreeDist, "degreesPrior.txt");
+		
+		g.writeArray(sizes, "sizesPrior.txt");
 		
 		//System.out.println(set.length);
 		
@@ -128,10 +139,19 @@ public class DataToGraphConverter{
 		
 		g.partition3(maxSize, threshold, cutDecrease);
 		
-		set = g.connectedComponents();
+		degreeDist =  g.degreeDist();
+		
+		set = g.connectedComponents(degreeDist);
+		
+		sizes = g.partitionDist(set);
 		
 		g.partitionDist(set);
 		
+		g.writePartitions(set);
+		
+		g.writeArray(degreeDist, "degreesAfter.txt");
+		
+		g.writeArray(sizes, "sizesAfter.txt");
 	}
 	
 	
