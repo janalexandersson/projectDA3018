@@ -2,7 +2,11 @@
 21/5/19: Skapat dagbok.
 25/5/19: Skrev Flood Fill och bollade med Jan som sedan implementerade den i huvudklassen med mindre ändringar.
 26/5/19: Skrev metoder för fördelningarna för gradtal och partitionsstorlekar. Även skrivit basen till huvudpartitionering (För att reducera till storlek minder än 1000)
+	 Skrev även enkla metoder för att returnerna gradtalsfördelning samt partitionsstorleksfördelningen.	
 27/5/19: Filat mer på potentiella partitionsmetoder. Tar bort alla över visst gradtal vilket ger oss partioner av storlek < 1000 relativt snabbt. Vi tar dock dock för mycket från vissa partitioner där detta ej behövs. Ska kolla vidare underveckan
-28/5/19: Kontrollcheckat andra gruppmedlemmars kod.
-29/5/19: ^
-30/5/19: Gjort mindre ändringar i partition3.
+28/5/19: Kontrollcheckat andra gruppmedlemmars kod och givit feedback.. 
+29/5/19: Testatd ytterligare partitioneringsmetoder men inget gav bättre resultat än partitions3 med mindre ändringar
+30/5/19: Gjort mindre ändringar i partition3
+06/6/19: Gruppen satt stor del av förmiddagen och gick igenom vad som behövde göras. Skrev majoriteten av rapporten och 	 skrev lite R-kod för att representera gradtalsfördelning och partitionsstorleksfördelning. Det visar sig att vi 	 har en enorm delgraf medan resterande delgrafer uppfyller kravet (storlek < 1000). Tagit fram tidskomplexitet		 för flood fill men borde kolla på andra algoritmer också. 
+07/7/19: Ska fixa ggplotsen för fördelningarna och skriva lite om dessa. Ska även disskutera tidskomplexitet för 
+	 arrayMax och fylla ut rapporten.
