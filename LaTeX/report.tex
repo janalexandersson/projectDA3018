@@ -1,5 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}   
+\usepackage{float}
 
 %opening
 \title{A Genome Assembly Graph \\
@@ -57,33 +59,37 @@ In this project we have choosen to represent our graph using a so called adjacen
 \section{Degree Distribution Prior to Partitioning}
 
 In order to determine the degree distribution of our graph we simply used the nice functionality of the adjacency list by taking the sizes of each individual list of neighbors. Prior to the partitioning of the graph we were left with the following distribution.
-
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\lindwidth]{degreeprior.png}
+	\includegraphics[width=0.85\linewidth]{degreesprior.png}
 	\caption{Degree distribution before partitioning}
 	\label{fig:degprior}
 \end{figure}
-
-As can be seen in Figure \bref{fig:defprior} we have a large number of nodes with degrees of reasonable level, there are however some nodes with degrees that exceed 100 which according to our knowledge should be impossible. When performing our partitions these nodes will be the first to be removed due to simply being unrealistic.
+As can be seen in Figure \bref{fig:degprior} we have a large number of nodes with degrees of reasonable level. There are however some nodes with degrees that exceed 100 which according to our knowledge should be impossible. When performing our partitions these nodes will be the first to be removed due to simply being unrealistic. In the figure we choose to exclude the representation of all nodes with degrees of 50 due to their rarity compared to those of lesser degree. The inclussion of these would alse stretch out the graph significantly which would make the results of smaller degrees more difficult to interpret. 
 
 \section{Distribution of Disconnected Subgraphs Prior to Partitioning}
 
 In order to determine the number of disconnected subgraphs and the sizes of these in our graph we implement a Flood Fill algorithm. The Flood Fill algorithm works by choosing some random node and give it some colour. Then all the neighbors of that node are coloured with the same colour. The procedure is repeated on their neighbors and so on untill there are no nodes left to colour. When this occurs we choose some non-coloured node and give it some different colour. This is repeated until there are no more nodes to colour. The number of different of colours in our graph is the number of disconnected subgraphs whilst the nodes of each colour gives us the size distribution of the subgraphs. In the actual algorithm we let the colours be represented by integers meaning that nodes belong to subgraph $0,1,2,...$. The distribution of the sizes of the subgraphs looks as follows before we partition the graph further.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=\lindwidth]{sizesprior.png}
-	\caption{Size distribution of sungraphs before partitioning}
+	\includegraphics[width=0.85\linewidth]{sizesprior.png}
+	\caption{Size distribution of the disconnected subgraphs before partitioning}
 	\label{fig:sizeprior}
 \end{figure}
 
+In Figure \bref{fig:sizeprior} we have choosen to examine the sizes of the smaller subgraphs. There exists some disconnected subgraphs with degrees over 50 but they are very few compared to the many smaller ones. We note from the figure that the subgraphs of size $2$ are extremely frequent, meaning that we have two contigs which only overlap one another which is interesting. Lastly it should be mentioned that there exists one extremely large subgraph, containing approximatley 6.5 million our of the 11 million contigs in the data set. 
+
+\medskip
+
 The asymptotic time complexity of the algorithm is $O(n)$ since every node is visited only once where we only perform linear operations. The nodes can be visited by being the first node in a new partition or by being part of
-some other partition, and as a result being visited in a while-loop. The way in which the nodes are visited is unimportant since it they are only visited and dealt with once and with the same asynptotic time complexity $O(1)$. 
-Since we itterate through all nodes, visiting and dealing with each node with complexity $O(1)$, the total time complexity is then $O(n)$.
+some other partition, and as a result being visited in a while-loop. The way in which the nodes are visited is unimportant since it they are only visited  once and with the same asynptotic time complexity $O(1)$. Since we itterate through all nodes, visiting and dealing with each node with complexity $O(1)$, the total time complexity is then $O(n)$.
+
+\medskip
+
+When creating the method which returns the distribution of the sizes of the subgraphs we noticed that there was no built in for the maximum of an array. To solve this we simply wrote our own which has space complexity $O(1)$ due to having to store the current maximum. Since we only make $n-1$ comparissons the time complexity is then $O(n)$.
 
 \section{Partitioning}
-
 
 The original graph consisted of subgraphs already from the beginning, although few. The major subgraph consisted of a couple of million
 nodes, far from our goal with partitions of maximum size 1000. We have information that contigs with 100 overlaps or more with great
@@ -96,14 +102,35 @@ great risk that we remove something that is correct. Therefore we start lowering
 
 
 
-\section{Degree Distribution After Partitioning}
+\subsection{Degree Distribution After Partitioning}
 
+After we partition the graph in order to reduce the size of all disconnected subgraphs we end up removing quite a lot of nodes. This obviosuly leads to some differences in the degree dsitribution which can be seen below.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{degreesafter.png}
+	\caption{Degree distribution before partitioning}
+	\label{fig:degafter}
+\end{figure}
+
+In Figure \bref{fig:degafter} we note that the number of nodes with lower degrees has increase compared to Figure \bref{fig:degprior}. This is quite intutive since we have only removed nodes, leading to a reduction in the number of edges and as a result the average degree. We also note that the number of nodes with degrees larger than 30 are a lot fewer than in Figure \bref{fig:degprior} which is simply due to the characteristics of the partition methods which quite rapidly removes nodes of degrees larger than 20 in order to satisfy the criteria of having subgraphs of sizes lower than 1000.
 
 \subsection{Distribution of Disconnected Subgraphs After Partitioning}
 
+When partitioning our graph in order to satsify the criteria we end up creating a lot more subgraphs which can be seen below.
 
-\section{Time Complexity}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{sizesafter.png}
+	\caption{Size distribution of the disconnected subgraphs before partitioning}
+	\label{fig:sizeafter}
+\end{figure}
 
+In Figure \bref{fig:sizeafter} we actually have some noticeable number of disconnected subgraph with sizes close to $100$ which we did not have before partitioning. This is a result of partitioning the aforementioned subgraph containing 6.5 million contigs. By partitioning this graph we have also drastically increase the number of disconnected subgraph from about 486000 to about 710000, which as a result leads to increase in the number of subgraphs of smaller sizes across the board. 
+
+\bigskip
+
+FREDRIKA SKRIV OM EXPONENTIALFÖRDELNING FÖR DET VAR COOLT!
 
 \end{document}
 

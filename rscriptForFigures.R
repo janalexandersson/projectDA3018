@@ -1,5 +1,4 @@
 library(tidyverse)
-setwd("/home/jan/Desktop/Computer Science/projectDA3018")
 
 degAfter <- read.csv("degreesAfter.txt", header = FALSE)
 
