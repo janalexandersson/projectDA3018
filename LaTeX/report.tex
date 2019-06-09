@@ -25,7 +25,7 @@
 
 \section{Introduction}
 
-In this project we examine data consisting of genome assemblies of norwegian spruces. The data set is made up of the starting and ending indexes of the overlap between so called contigs. We let the contigs represent some nodes in a graph whilst the overlap between two contigs creates an edges, which gives us some genome assembly graph which henceforth will be referrd to simply as the graph. 
+In this project we examine data consisting of genome assemblies of norwegian spruces. The data set is made up of the starting and ending indexes of the overlap between so called contigs. We let the contigs represent some nodes in a graph whilst the overlap between two contigs creates an edge, which gives us some genome assembly graph which henceforth will be referred to simply as the graph. 
 
 \medskip
 
@@ -37,7 +37,7 @@ It turns out to be difficult to perform more precise operations on data of this 
 
 \section{Creating the Graph}
 
-In order to create our actual graph we have to translate the actual data set to nodes and edges. In the data set we are given some identifiers for the contigs in question and information regarding their overlap. If an overlap exists between the contigs we create and edge between them. There is however one exception to this rule which is that an edge is not create if one of the contigs is a subsequence of the other. The reason for this is that the occurences of such subsequences is the outcome of containment.
+In order to create our actual graph we have to translate the actual data set to nodes and edges. In the data set we are given some identifiers for the contigs in question and information regarding their overlap. If an overlap exists between the contigs we create and edge between them. There is however one exception to this rule which is that an edge is not created if one of the contigs is a subsequence of the other. The reason for this is that the occurences of such subsequences is the outcome of containment.
 
 \medskip
 
@@ -50,7 +50,7 @@ If we can simply give Java more access to RAM then this solution is the most nat
 
 \medskip
 
-When examining the data in order to create our convereter we ovbiosuly could not examine the file as a whole due to its size. To bypass this issue we simply used the unix commands ''more'' ans ''less'' in order to examine the data page by page. In the early stages we also needed smaller test files to work with, for this we used the function sed to select an interval of lines from the file and create a new file with those. 
+When examining the data in order to create our convereter we ovbiosuly could not examine the file as a whole due to its size. To bypass this issue we simply used the unix commands ''more'' ans ''less'' in order to examine the data page by page. In the early stages we also needed smaller test files to work with, for this we used the function "sed" to select an interval of lines from the file and create a new file with those. 
 
 \subsection{Graph Representation}
 
@@ -109,11 +109,36 @@ After we partition the graph in order to reduce the size of all disconnected sub
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.85\linewidth]{degreesafter.png}
-	\caption{Degree distribution before partitioning}
+	\caption{Degree distribution after partitioning}
 	\label{fig:degafter}
 \end{figure}
 
-In Figure \bref{fig:degafter} we note that the number of nodes with lower degrees has increase compared to Figure \bref{fig:degprior}. This is quite intutive since we have only removed nodes, leading to a reduction in the number of edges and as a result the average degree. We also note that the number of nodes with degrees larger than 30 are a lot fewer than in Figure \bref{fig:degprior} which is simply due to the characteristics of the partition methods which quite rapidly removes nodes of degrees larger than 20 in order to satisfy the criteria of having subgraphs of sizes lower than 1000.
+In Figure \bref{fig:degafter} we note that the number of nodes with lower degrees has increase compared to Figure \bref{fig:degprior}. This is quite intutive since we have only removed nodes, leading to a reduction in the number of edges and as a result the average degree. We also note that the number of nodes with degrees larger than 30 are a lot fewer than in Figure \bref{fig:degprior} which is simply due to the characteristics of the partition methods which quite rapidly removes nodes of degrees larger than 20 in order to satisfy the criteria of having subgraphs of sizes lower than 1000. Degrees up to 99 exist but are very few. In Figure \bref{fig:degexp} below we can see the degree distributions before and after the partitioning together.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\linewidth]{degexp.jpeg}
+	\caption{Degree distributions}
+	\label{fig:degexp}
+\end{figure}
+
+Figure \bref{fig:degexp} shows that the degree distribution before and after partitioning can be described by the $Exp(1/5)$ distribution and $Exp(1/3.5)$ distribution respectively.  
+
+If we let $D$ be the degree of a node before we partition the graph we can compute the that
+
+$P(D>20)=e^{-20\cdot 1/5}<0.02$
+
+$P(5<D<20)=e^{-5 \cdot 1/5}-0.02<0.35$
+
+with the help of the fact that the degree distribution accurately seems to follow an $Exp(1/5)$ distribution for the lower degrees. We can see that nodes with degree bigger than 20 are quite unlikely but numbers between 5 and 20 are frequently occurring. This justifies our steps in the partitioning, we must be more careful for nodes with degree less than 20. One could be even more careful and checking after every node removed after some time, but we assess that this would cost a lot in time. 
+
+\medskip
+
+We have removed 646 394 nodes in total, 112 783 nodes with degree 100 or bigger, 191 625‬ nodes with degree between 20 and 100 and 229 203‬ between 5 and 20. Below 6 the degree distribution is the same, the increase of nodes with degree one in the plot follows from the fact that we instead of removing nodes make them isolated with degree one.
+
+\medskip
+
+29 179 998 edges were removed during the partitioning, we had 49 790 386 before and 20 610 388 after, meaning that we have removed more than the half of all edges. This is however reasonable since we have removed the nodes with the high degrees, in the beginning one node even had a degree close to 3 000! 
 
 \subsection{Distribution of Disconnected Subgraphs After Partitioning}
 
@@ -126,11 +151,10 @@ When partitioning our graph in order to satsify the criteria we end up creating 
 	\label{fig:sizeafter}
 \end{figure}
 
-In Figure \bref{fig:sizeafter} we actually have some noticeable number of disconnected subgraph with sizes close to $100$ which we did not have before partitioning. This is a result of partitioning the aforementioned subgraph containing 6.5 million contigs. By partitioning this graph we have also drastically increase the number of disconnected subgraph from about 486000 to about 710000, which as a result leads to increase in the number of subgraphs of smaller sizes across the board. 
+In Figure \bref{fig:sizeafter} we actually have some noticeable number of disconnected subgraph with sizes close to $100$ which we did not have before partitioning. This is a result of partitioning the aforementioned subgraph containing 6.5 million contigs. By partitioning this graph we have also drastically increase the number of disconnected subgraph from about 486000 to about 710000, which as a result leads to increase in the number of subgraphs of smaller sizes across the board. Again notice that the x-axis is cut at Size=100, bigger sizes exist but are too few to be seen in the plot.
 
 \bigskip
 
-FREDRIKA SKRIV OM EXPONENTIALFÖRDELNING FÖR DET VAR COOLT!
 
 \end{document}
 

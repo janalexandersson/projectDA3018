@@ -1,13 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/W32TeX) (preloaded format=pdflatex 2019.5.23)  7 JUN 2019 21:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.3.29)  9 JUN 2019 20:59
 entering extended mode
- restricted \write18 enabled.
- %&-line parsing enabled.
-**report.tex
-(./report.tex
+**./report.tex
+(report.tex
 LaTeX2e <2018-12-01>
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/base/article.cls
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/base/size10.clo
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
 File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -21,44 +19,50 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-)
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/base/inputenc.sty
+) ("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\inputenc.st
+y"
 Package: inputenc 2018/08/11 v1.3c Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
 )
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.
+sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
+y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
 )
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
+sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graph
+ics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdfte
+x.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/float/float.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty"
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count88
 \float@exts=\toks17
 \float@box=\box27
 \@float@everytoks=\toks18
 \@floatcapt=\box28
-) (./report.aux)
+)
+(report.aux)
 \openout1 = `report.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -74,7 +78,8 @@ LaTeX Font Info:    ... okay on input line 22.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
 
-(d:/Tex/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
+df.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count89
 \scratchdimen=\dimen105
@@ -87,39 +92,51 @@ LaTeX Font Info:    ... okay on input line 22.
 \MPnumerator=\count93
 \makeMPintoPDFobject=\count94
 \everyMPtoPDFconversion=\toks20
-) (d:/Tex/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+)
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-
+base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infware
+rr.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.st
+y"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefin
+ekeys.sty"
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds
+.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions
+.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetke
+ys.sty"
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmd
+s.sty"
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifluate
+x.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 ))))
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftexc
+mds.sty"
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(d:/Tex/texlive/2019/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+("C:\Users\ffred\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.s
+ty"
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -133,73 +150,101 @@ Package grfext Info: Graphics extension search list:
 (grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
-
-(d:/Tex/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
+)
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 24.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 24.
+ [1
 
-[1
-
-{d:/Tex/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-<degreesprior.png, id=10, 451.6875pt x 225.84375pt>
+{C:/Users/ffred/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+<degreesprior.png, id=9, 451.6875pt x 225.84375pt>
 File: degreesprior.png Graphic file (type png)
 <use degreesprior.png>
 Package pdftex.def Info: degreesprior.png  used on input line 64.
 (pdftex.def)             Requested size: 293.2521pt x 146.63472pt.
- [2 <./degreesprior.png>]
+
+[2 <./degreesprior.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 72.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 72.
-<sizesprior.png, id=15, 451.6875pt x 225.84375pt>
+<sizesprior.png, id=14, 451.6875pt x 225.84375pt>
 File: sizesprior.png Graphic file (type png)
 <use sizesprior.png>
 Package pdftex.def Info: sizesprior.png  used on input line 76.
 (pdftex.def)             Requested size: 293.2521pt x 146.63472pt.
  [3 <./sizesprior.png>]
-<degreesafter.png, id=21, 451.6875pt x 225.84375pt>
+<degreesafter.png, id=20, 451.6875pt x 225.84375pt>
 File: degreesafter.png Graphic file (type png)
 <use degreesafter.png>
 Package pdftex.def Info: degreesafter.png  used on input line 111.
 (pdftex.def)             Requested size: 293.2521pt x 146.63472pt.
  [4]
-<sizesafter.png, id=26, 451.6875pt x 225.84375pt>
+<degexp.jpeg, id=25, 455.0601pt x 227.4096pt>
+File: degexp.jpeg Graphic file (type jpg)
+<use degexp.jpeg>
+Package pdftex.def Info: degexp.jpeg  used on input line 120.
+(pdftex.def)             Requested size: 345.0pt x 172.41669pt.
+ [5 <./degreesafter.png> <./degexp.jpeg>]
+
+! Package inputenc Error: Unicode character ‬ (U+202C)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137 ...es with degree 100 or bigger, 191 625‬
+                                                   nodes with degree between...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+
+! Package inputenc Error: Unicode character ‬ (U+202C)
+(inputenc)                not set up for use with LaTeX.
+
+See the inputenc package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.137 ...degree between 20 and 100 and 229 203‬
+                                                   between 5 and 20. Below 6...
+
+You may provide a definition with
+\DeclareUnicodeCharacter 
+
+<sizesafter.png, id=33, 451.6875pt x 225.84375pt>
 File: sizesafter.png Graphic file (type png)
 <use sizesafter.png>
-Package pdftex.def Info: sizesafter.png  used on input line 124.
+Package pdftex.def Info: sizesafter.png  used on input line 149.
 (pdftex.def)             Requested size: 293.2521pt x 146.63472pt.
- [5 <./degreesafter.png> <./sizesafter.png>]
-Overfull \hbox (20.75682pt too wide) in paragraph at lines 133--134
-[]\OT1/cmr/m/n/10 FREDRIKA SKRIV OM EX-PO-NEN-TIALF[]ORDELNING F[]OR DET VAR CO
-OLT! 
- []
-
-[6] (./report.aux) ) 
+[6 <./sizesafter.png>] (report.aux) ) 
 Here is how much of TeX's memory you used:
- 1536 strings out of 492609
- 22123 string characters out of 6130922
- 87290 words of memory out of 5000000
- 5456 multiletter control sequences out of 15000+600000
- 7587 words of font info for 27 fonts, out of 8000000 for 9000
+ 1542 strings out of 492945
+ 23182 string characters out of 3126252
+ 86694 words of memory out of 3000000
+ 5439 multiletter control sequences out of 15000+200000
+ 7587 words of font info for 27 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,7n,25p,949b,214s stack positions out of 5000i,500n,10000p,200000b,80000s
-<d:/Tex/texlive/2019/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb><d:/Tex/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi10.pfb><d:/Tex/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.
-pfb><d:/Tex/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><d
-:/Tex/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><d:/Tex/
-texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (6 pages, 95877 bytes).
+ 41i,7n,25p,951b,214s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/ffred/AppData/Local/Programs/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ffred/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ffred/
+AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/
+Users/ffred/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/ffred/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr12.pfb><C:/Users/ffred/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb><C:/Users/ffred/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/ffred/AppData/Local/Progra
+ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ffred/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on report.pdf (6 pages, 225160 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
- 32 compressed objects within 1 object stream
+ 66 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
