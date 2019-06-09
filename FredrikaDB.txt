@@ -1,17 +1,33 @@
 FredrikaDB
 
 23 maj
-* försökt sätta mig in i projektet
+* fÃ¶rsÃ¶kt sÃ¤tta mig in i projektet
 
 27 maj 
 * tittat igenom vad som gjorts hittils
 
-* funderat på hur man kan få till en rimlig partitionering (ej ta bort mer än nödvändigt)
- baserat på vad grundpartitioneringen (ta bort gradtal över 100) ger. 
- Vissa partitioneringar behöver förfinas mer än andra.
+* funderat pÃ¥ hur man kan fÃ¥ till en rimlig partitionering (ej ta bort mer Ã¤n nÃ¶dvÃ¤ndigt)
+ baserat pÃ¥ vad grundpartitioneringen (ta bort gradtal Ã¶ver 100) ger. 
+ Vissa partitioneringar behÃ¶ver fÃ¶rfinas mer Ã¤n andra.
 
 28 maj 
-* gjort nya testfiler med hjälp av sed i unix. test_stor med 1 000 000 rader
+* gjort nya testfiler med hjÃ¤lp av sed i unix. test_stor med 1 000 000 rader
   och test_mellan med 100 000 rader
 
-* gjort en alternativ partition-förfinare som behandlar partition för partition
+* gjort en alternativ partition-fÃ¶rfinare som behandlar partition fÃ¶r partition
+
+29 maj
+* skrivit om funktionen frÃ¥n igÃ¥r, dÃ¥ den mÃ¶jligen strular till index
+
+30 maj
+* skrivit ny partitioneringsfunktion som Ã¤r tydligare och enklare att justera. Se partition3
+
+31 maj
+* undersÃ¶kt grad- och storleksfÃ¶rdelningar i R genom att skriva dessa till en ny fil
+
+6 juni
+* diskuterat rapport och representation av grad- och storleksfÃ¶rdelningar. Skrivit pÃ¥ rapport.
+UndersÃ¶ket grafer i R
+
+7 juni
+* skrivit det sista i rapporten om partitioneringen och likheter som hittats med exponentialfÃ¶rdelningen
