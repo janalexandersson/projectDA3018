@@ -210,6 +210,7 @@ public class Graph{
 	
 	}
 	
+	//not used
 	//Takes some maximum size for a partition whilst also taking a threshold where we remove all degrees of that degree or higher
 	public void partitionWithoutExtremes(int maxSize, int threshold){
 					
@@ -392,7 +393,7 @@ public class Graph{
     }
 
 	
-	
+	//for statistics
 	public void writePartitions(int[] componentSet){
 		try{
 			FileWriter fw=new FileWriter("partitions.txt");    
@@ -410,6 +411,7 @@ public class Graph{
 		
 	}
 	
+	//for statistics
 	public void writeArray(int[] array, String file){
 	
 		try{
