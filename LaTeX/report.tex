@@ -105,7 +105,7 @@ When creating the method which returns the distribution of the sizes of the subg
 \medskip
 
 When first implementing the Flood Fill algorithm we used recursion which worked without any problems for test files with a lower number of nodes, but when 
-applying the algorithm on a really big graph caused the recursion to become too deep and we ended up with a stack overlow error. 
+applying the algorithm on a really big graph caused the recursion to become too deep and we ended up with a stack overflow error. 
 The error message was surprising as we did not make use of any stack in our code but after some research we read that when doing recursion Java make use of a stack. 
 The problem was solved by simply implement the stack ourselves, which had access to more memory. Ultimately, we ended up not using recursion at all and managed 
 to implement the algorithm without recursion. 
@@ -146,6 +146,8 @@ In Figure \bref{fig:degafter} we note that the number of nodes with lower degree
 
 Figure \bref{fig:degexp} shows that the degree distribution before and after partitioning can be described by the $Exp(1/5)$ distribution and $Exp(1/3.5)$ distribution respectively.  
 
+\medskip 
+
 If we let $D$ be the degree of a node before we partition the graph we can compute the that
 
 $P(D>20)=e^{-20\cdot 1/5}<0.02$
@@ -156,7 +158,7 @@ with the help of the fact that the degree distribution accurately seems to follo
 
 \medskip
 
-We have removed 646 394 nodes in total, 112 783 nodes with degree 100 or bigger, 191 625‬ nodes with degree between 20 and 100 and 229 203‬ between 5 and 20. Below 6 the degree distribution is the same, the increase of nodes with degree one in the plot follows from the fact that we instead of removing nodes make them isolated with degree one.
+We have removed 646 394 nodes in total, 112 783 nodes with degree 100 or bigger, 191 625‬ nodes with degree between 20 and 100 and 229 203 between 5 and 20. Below 6 we have not removed any nodes, although some new nodes with degrees less than 6 might have been created during the partitioning process. The increase of nodes with degree one in the plot follows from the fact that we instead of removing nodes make them isolated with degree one.
 
 \medskip
 
