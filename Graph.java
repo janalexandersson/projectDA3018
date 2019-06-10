@@ -393,7 +393,7 @@ public class Graph{
     }
 
 	
-	//for statistics
+	//final partitions to new file
 	public void writePartitions(int[] componentSet){
 		try{
 			FileWriter fw=new FileWriter("partitions.txt");    
